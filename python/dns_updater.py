@@ -64,7 +64,7 @@ class ConfigUpdater:
     def to_text(self):
         text = ''
         for hostname in self.hosts:
-            text += hostname + '\tA\t' + self.hosts[hostname]['ip'] + '\n'
+            text += hostname + '\tIN\tA\t' + self.hosts[hostname]['ip'] + '\n'
 
         return text
 

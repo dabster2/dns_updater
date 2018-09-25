@@ -1,4 +1,5 @@
 #!/bin/bash
+#pip install jinja2
 
 CTRL_DIR=/etc/dns_updater/control
 chains=pve-search.txt
@@ -23,7 +24,7 @@ fi
 cp -f /etc/dns_updater/$filename $CTRL_DIR
 echo "$filename: Start DNS Update..."
 
-dns_updater --hosts /etc/pve/nodes/ --template /etc/dns_updater/template --output_config /etc/nsd/master/numus.lan
+python /etc/dns_updater/python/dns_updater.py --hosts /etc/pve/nodes/ --template /etc/dns_updater/template --output_config /etc/nsd/master/numus.lan
 echo "nsd-control reload...."
 nsd-control reload
 echo "Changes in dns-name or ip addresses are noticed. Applied changes!!! $dt" | mail -s "dns_updater" sysadmins@centroit.eu
